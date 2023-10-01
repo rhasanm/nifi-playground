@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sshd-container:
+    build:
+      context: .
+      dockerfile: SSHDockerfile
+    ports:
+      - 3456:3456
+    volumes:
+      - ${SSH_VOLUME}:/root/.ssh  # Mount your local SSH config and keys
+    command: ["/usr/sbin/sshd", "-D"]
